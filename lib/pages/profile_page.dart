@@ -1,3 +1,4 @@
+import '../globals.dart';
 import '/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -50,6 +51,17 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontWeight: FontWeight.bold,
                             color: black),
                       ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.exit_to_app_outlined,
+                            size: 25,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -96,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Vinicius Castro",
+                              globalPessoaFisica.nomeCompleto,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -106,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 10,
                             ),
                             Text(
-                              "Pontos: 245",
+                              "95" + " ponto(s)",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -153,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 height: 10,
                               ),
                               Text(
-                                "R\$2446.90",
+                                "R\$ "+ globalPessoaFisica.saldo.toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
@@ -191,7 +203,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(
                       fontSize: 17, fontWeight: FontWeight.bold, color: black),
                   decoration: InputDecoration(
-                      hintText: "email@gmail.com.br", border: InputBorder.none),
+                      hintText: globalPessoaFisica.email, border: InputBorder.none),
                 ),
                 SizedBox(
                   height: 20,

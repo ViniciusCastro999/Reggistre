@@ -51,7 +51,7 @@ class _BudgetPageState extends State<BudgetPage> {
                       Row(
                         children: [
                           Icon(
-                            Icons.add,
+                            Icons.exit_to_app_outlined,
                             size: 25,
                           ),
                           SizedBox(
@@ -186,7 +186,7 @@ class _BudgetPageState extends State<BudgetPage> {
                             Padding(
                               padding: const EdgeInsets.only(top: 3),
                               child: Text(
-                                "R\$5000.00",
+                                "R\$ 955.90",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 13,

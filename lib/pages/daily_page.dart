@@ -1,3 +1,4 @@
+import '../globals.dart';
 import '/json/daily_json.dart';
 import '/json/day_month.dart';
 import '/theme/colors.dart';
@@ -16,6 +17,15 @@ class _DailyPageState extends State<DailyPage> {
       backgroundColor: grey.withOpacity(0.05),
       body: getBody(),
     );
+  }
+
+  double getTotalValue() {
+    double total = 0;
+    for (var singlemovimentacao in globalMovimentacoes) {
+      total += singlemovimentacao.valor;
+    }
+
+    return total;
   }
 
   Widget getBody() {
@@ -46,6 +56,17 @@ class _DailyPageState extends State<DailyPage> {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: black),
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.exit_to_app_outlined,
+                            size: 25,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -111,7 +132,7 @@ class _DailyPageState extends State<DailyPage> {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
-                children: List.generate(daily.length, (index) {
+                children: List.generate(4, (index) {
               return Column(
                 children: [
                   Row(
@@ -144,20 +165,11 @@ class _DailyPageState extends State<DailyPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    daily[index]['name'],
+                                    globalMovimentacoes[index].nome,
                                     style: TextStyle(
                                         fontSize: 15,
                                         color: black,
                                         fontWeight: FontWeight.w500),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    daily[index]['date'],
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        color: black.withOpacity(0.5),
-                                        fontWeight: FontWeight.w400),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ],
@@ -172,7 +184,7 @@ class _DailyPageState extends State<DailyPage> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              daily[index]['price'],
+                              "R\$ "+globalMovimentacoes[index].valor.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 15,
@@ -216,7 +228,7 @@ class _DailyPageState extends State<DailyPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: Text(
-                    "R\$1780.00",
+                      "R\$ "+getTotalValue().toString(),
                     style: TextStyle(
                         fontSize: 20,
                         color: black,

@@ -155,7 +155,7 @@ class _LoginFreshSignUpState extends State<LoginFreshSignUp> {
                                 borderSide: BorderSide(
                                     color: widget.backgroundColor ??
                                         green)),
-                            hintText: this.loginFreshWords.hintLoginUser)),
+                            hintText: "Email")),
                   ),
                   Padding(
                     padding:
@@ -298,7 +298,7 @@ class _LoginFreshSignUpState extends State<LoginFreshSignUp> {
                       height: MediaQuery.of(context).size.height * 0.07,
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: Card(
-                          elevation: 10,
+                          elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),

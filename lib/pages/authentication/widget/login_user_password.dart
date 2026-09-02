@@ -69,7 +69,7 @@ class _LoginFreshUserAndPasswordState extends State<LoginFreshUserAndPassword> {
           centerTitle: true,
           elevation: 0,
           title: Text(
-            this.loginFreshWords.login,
+            "Bem-vindo(a)!",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -262,20 +262,23 @@ class _LoginFreshUserAndPasswordState extends State<LoginFreshUserAndPassword> {
                       )
                     : GestureDetector(
                         onTap: () async {
-
-                          widget.callLogin(context, setIsRequest,
+                          print(this._textEditingControllerUser.text);
+                          print(this._textEditingControllerPassword.text);
+                          bool sucesso = await widget.callLogin(context, setIsRequest,
                               this._textEditingControllerUser.text,
                               this._textEditingControllerPassword.text);
 
-                         Navigator.of(context).push(MaterialPageRoute(
-                           builder: (context) => RootApp(),
-                         ));
+                          if (sucesso == true) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RootApp(),
+                            ));
+                          }
                         },
                         child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.07,
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: Card(
-                                elevation: 10,
+                                elevation: 0,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),
                                 ),
